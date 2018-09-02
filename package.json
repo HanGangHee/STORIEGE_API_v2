@@ -1,0 +1,38 @@
+{
+  "name": "storiege",
+  "version": "0.0.1",
+  "description": "STORIEGE(Story + Storage) backend",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app",
+    "production": "cross-env NODE_ENV=production PORT=3000 pm2 start app.js -i -1",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HanGangHee/STORIEGE_API_v2.git"
+  },
+  "author": "HanGangHee",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HanGangHee/STORIEGE_API_v2/issues"
+  },
+  "homepage": "https://github.com/HanGangHee/STORIEGE_API_v2#readme",
+  "devDependencies": {
+    "axios": "^0.18.0",
+    "chai": "^4.1.2",
+    "mocha": "^5.2.0",
+    "nodemon": "^1.18.4"
+  },
+  "dependencies": {
+    "bcrypt": "^3.0.0",
+    "connect-flash": "^0.1.1",
+    "dotenv": "^6.0.0",
+    "express": "^4.16.3",
+    "morgan": "^1.9.0",
+    "mysql2": "^1.6.1",
+    "pm2": "^3.0.4",
+    "pug": "^2.0.3",
+    "sequelize": "^4.38.0"
+  }
+}
