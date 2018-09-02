@@ -6,6 +6,16 @@ const sequelize = new Sequelize(config.database, config.username, config.passwor
 const db = {};
 
 
+db.User = require('./user')(sequelize, Sequelize)
+db.Hashtag = require('./Hashtag')(sequelize, Sequelize)
+db.Wiki = require('./wiki')(sequelize, Sequelize)
+
+db.User.hasMany(db.Wiki)
+db.Wiki.belongsTo(db.User)
+
+db.Hashtag.belongsToMany(db.Wiki, { through : 'WikiHashtag' })
+db.Wiki.belongsToMany(db.Hashtag, { through : 'WikiHashtag' })
+
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
