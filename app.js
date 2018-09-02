@@ -2,7 +2,9 @@ const express = require('express')
 const path = require('path')
 const flash = require('connect-flash')
 const logger = require('morgan')
+const { sequelize } = require('./models')
 
+sequelize.sync()
 require('dotenv').config()
 
 const route = require('./routes')
