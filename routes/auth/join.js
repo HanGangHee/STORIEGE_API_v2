@@ -22,7 +22,7 @@ module.exports = async (req, res, next) => {
     try {
         const exUser = await User.find( { where: { userId } })
         if(exUser){
-            req.flash('joinError', '이미 가입된 이메일 입니다.')
+            return res.json({ message : "이미 가입된 유저입니다." })
         }
         const hash = await bcrypt.hash(pwd, 12);
         await User.create({
