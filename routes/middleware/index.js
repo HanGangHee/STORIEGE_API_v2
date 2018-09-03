@@ -25,7 +25,6 @@ exports.isLoggedIn = (req, res, next) => {
         res.status(403).json({ message: "로그인 필요" })
     }
 }
-
 exports.isNotLoggedIn = (req, res, next) => {
     const token = req.authorization || req.headers['x-access-token'] || req.query.token
     if(!token){
