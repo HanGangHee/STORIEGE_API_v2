@@ -1,5 +1,5 @@
 const bcrypt = require('bcrypt')
-const jwt = require('jwt')
+const jwt = require('jsonwebtoken')
 const { User } = require('../../models')
 
 
@@ -33,7 +33,7 @@ module.exports = async (req, res, next) => {
             sex,
             thema
         })
-        return res.redirect('/')
+        res.json( { success:true })
     } catch(error){
         console.error(error)
         next(error)

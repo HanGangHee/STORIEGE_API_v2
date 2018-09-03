@@ -19,4 +19,5 @@ db.Wiki.belongsToMany(db.Hashtag, { through : 'WikiHashtag' })
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
+
 module.exports = db;

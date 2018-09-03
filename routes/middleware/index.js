@@ -12,7 +12,6 @@ exports.isLoggedIn = (req, res, next) => {
                 })
             })
         const respond = (decoded) => {
-            console.log(decoded);
             req.user = decoded.user;
             next()
         }
@@ -23,7 +22,7 @@ exports.isLoggedIn = (req, res, next) => {
             .then(respond)
             .catch(onError)
     } else {
-        res.status(403).json({ success: false, message: "로그인 필요" })
+        res.status(403).json({ message: "로그인 필요" })
     }
 }
 

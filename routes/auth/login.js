@@ -19,7 +19,7 @@ module.exports = async (req, res, next) =>{
         if(exUser){
              const comparePWD = await bcrypt.compare(pwd, exUser.pwd)
             if(comparePWD){
-                 const token = jwt.sign({ user : exUser.userId }, req.app.get('JWT_SECRET'), {
+                 const token = jwt.sign({ user : exUser.id }, req.app.get('JWT_SECRET'), {
                      algorithm : 'HS256',
                      expiresIn : 60 * 60 * 24 * 7
                  })
