@@ -17,6 +17,7 @@ data :
 }
 
  */
+
 module.exports = async (req, res, next) => {
     const { userId, pwd, nick, age, sex, thema } = req.body
     try {
