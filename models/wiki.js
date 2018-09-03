@@ -12,6 +12,10 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.INTEGER,
             defaultValue : 0,
         },
+        userId : {
+            type: DataTypes.STRING(30),
+            allowNull: false,
+        },
         likes : {
             type: DataTypes.INTEGER,
             defaultValue : 0,
