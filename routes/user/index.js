@@ -34,6 +34,7 @@ router.put('/:id', isLoggedIn, async (req, res, next) => {
     }
 })
 
+
 router.delete('/:id', isLoggedIn, async (req, res, next) => {
     try {
         if(req.params.id != req.user.id){
