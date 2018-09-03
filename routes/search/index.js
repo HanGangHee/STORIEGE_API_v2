@@ -4,6 +4,7 @@ const { Hashtag } = require('../../models')
 
 const router = express.Router()
 
+
 router.get('/:tag', async (req, res, next) => {
     const tag = req.params.tag
     try {
