@@ -6,8 +6,7 @@ const router= express.Router()
 router.get('/wiki', async (req, res, next) => {
     try {
         const wikis = await Wiki.findAll({
-            include : [{ model : User }],
-            attributes : ['title', 'likes', 'dislikes'],
+            attributes : ['title', 'userId', 'likes', 'dislikes'],
             where : { parentId : 0 },
             order : ['likes', 'DESC'],
             limit : 10,
