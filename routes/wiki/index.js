@@ -5,10 +5,12 @@ const { Wiki, User } = require('../../models')
 const readWiki = require('./isAuthenticated/readWiki')
 const createWiki = require('./isAuthenticated/createWiki')
 const { updateContent, updateTitle, updateLike, updateParent} = require('./isAuthenticated/updateWiki')
-const deleteWiki = require('./isAuthenticated/readWiki')
+const deleteWiki = require('./isAuthenticated/deleteWiki')
 
 const router= express.Router()
 
+
+router.post('/', isLoggedIn, createWiki)
 router.get('/', async (req, res, next) => {
     try {
         const wikis = await Wiki.findAll({
@@ -27,6 +29,7 @@ router.get('/', async (req, res, next) => {
         next(error)
     }
 })
+router.get('/user', isLoggedIn, readWiki)
 router.get('/:num', async (req, res, next) => {
     try {
         const wikiId = req.params.num
@@ -45,13 +48,12 @@ router.get('/:num', async (req, res, next) => {
         next(error)
     }
 })
-router.get('/user', isLoggedIn, readWiki)
-router.post('/', isLoggedIn, createWiki)
+
 router.delete('/:num', isLoggedIn, deleteWiki)
 
 router.put('/title/:num', isLoggedIn, updateTitle)
 router.put('/content/:num', isLoggedIn, updateContent)
 router.put('/parent/:num', isLoggedIn, updateParent)
-router.put('/like/:num', updateLike)
+router.put('/like/:num', isLoggedIn, updateLike)
 
 module.exports = router

@@ -1,7 +1,7 @@
 const { Wiki, sequelize } = require('../../../models')
 
 exports.updateTitle = async (req, res, next) => {
-    const userId = req.user.id
+    const userId = req.user
     const wikiId = req.params.num
     const { title } = req.body
     try {
@@ -20,7 +20,7 @@ exports.updateTitle = async (req, res, next) => {
 
 
 exports.updateContent = async (req, res, next) => {
-    const userId = req.user.id
+    const userId = req.user
     const wikiId = req.params.num
     const { content } = req.body
     try {
@@ -38,7 +38,7 @@ exports.updateContent = async (req, res, next) => {
 }
 
 exports.updateParent = async (req, res, next) => {
-    const userId = req.user.id
+    const userId = req.user
     const wikiId = req.params.num
     const { parentId } = req.body
     try {
@@ -56,7 +56,7 @@ exports.updateParent = async (req, res, next) => {
 }
 
 exports.updateLike = async (req, res, next) => {
-    const userId = req.user.id
+    const userId = req.user
     const wikiId = req.params.num
     const { like } = req.body
     try {
@@ -65,12 +65,12 @@ exports.updateLike = async (req, res, next) => {
             res.json({ message : "권한이 없습니다." })
             return
         }
-        if(like == 1){
+        if(like){
             await Wiki.update( { likes : sequelize.literal('likes + 1') }, { where : { id : wikiId }})
-        }
-        else if(like == -1){
+        } else {
             await Wiki.update( { dislikes : sequelize.literal('dislikes + 1') }, { where : { id : wikiId }})
         }
+
         res.json({ success : true })
     } catch(error) {
         console.error(error)
