@@ -7,6 +7,7 @@ const router = express.Router()
 
 router.get('/:tag', async (req, res, next) => {
     const tag = req.params.tag
+    console.log("tag " + tag)
     try {
         const hashtag = await Hashtag.find({ where : { title:tag }})
         if(hashtag){
